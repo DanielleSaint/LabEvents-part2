@@ -17,7 +17,7 @@ botonAgregar.addEventListener('click', function (e) {
         alert("Completa este campo");
         return;
     }
-    mostrarTareas(titulo, descripcionTarea);
+    
     //guardar localstorage
     const listaTareas = JSON.parse(localStorage.getItem("ToDo")) || [];
     listaTareas.push({titulo, descripcionTarea});
@@ -25,42 +25,43 @@ botonAgregar.addEventListener('click', function (e) {
     //limpiar cuadros de tareas
     document.getElementById('nombreTarea').value = '';
     document.getElementById('descripcion').value = '';
-});
 
-function mostrarTareas(titulo, descripcionTarea) {
-    //Creo una nueva lista
-    const nuevaLista = document.createElement('li');
-    nuevaLista.className = 'listaToDo';
-    nuevaLista.innerHTML = `
-        <div>
-            <img src="./img/pngtree-purple-round-border-image_2231965-removebg-preview.png" class="tareaCompletada" width=50px>
+    function mostrarTareas(titulo, descripcionTarea) {
+        //Creo una nueva lista
+        const nuevaLista = document.createElement('li');
+        nuevaLista.className = 'listaToDo';
+        nuevaLista.innerHTML = `
             <div>
-                <h2>${titulo}</h2>
-                <p>${descripcionTarea}</p>
+                <img src="./img/pngtree-purple-round-border-image_2231965-removebg-preview.png" class="tareaCompletada" width=50px>
+                <div>
+                    <h2>${titulo}</h2>
+                    <p>${descripcionTarea}</p>
+                </div>
+                <button type=submit class="eliminar">Eliminar</button>
             </div>
-            <button type=submit class="eliminar">Eliminar</button>
-        </div>
-    `;
-    // Cambiar imagen completada
-    const img = nuevaLista.querySelector('.tareaCompletada');
-    img.addEventListener('click', function () {
-        img.src = './img/png-transparent-check-mark-symbol-purple-steven-universe-amethyst-gemstone-logo-violet-circle-removebg-preview.png';
-    });
-    // Eliminar tarea
-    nuevaLista.querySelector('.eliminar').addEventListener('click', function () {
-        nuevaLista.remove();
-        eliminarLocal(titulo, descripcionTarea);
-    });
-    document.getElementById('listado').appendChild(nuevaLista);
-};
+        `;
+        // Cambiar imagen completada
+        const img = nuevaLista.querySelector('.tareaCompletada');
+        img.addEventListener('click', function () {
+            img.src = './img/png-transparent-check-mark-symbol-purple-steven-universe-amethyst-gemstone-logo-violet-circle-removebg-preview.png';
+        });
+        // Eliminar tarea
+        nuevaLista.querySelector('.eliminar').addEventListener('click', function () {
+            nuevaLista.remove();
+            eliminarLocal(titulo, descripcionTarea);
+        });
+        document.getElementById('listado').appendChild(nuevaLista);
+    };
+    mostrarTareas(titulo, descripcionTarea);
 
-function eliminarLocal(titulo, descripcionTarea) {
-    const tareasGuardadas = JSON.parse(localStorage.getItem("ToDo")) || [];
-    tareasGuardadas = tareasGuardadas.filter(tarea =>
-        tarea.titulo !== titulo || tarea.descripcionTarea !== descripcionTarea
-    );
-    localStorage.setItem('ToDo', JSON.stringify(tareasGuardadas));
-}
+    function eliminarLocal(titulo, descripcionTarea) {
+        const tareasGuardadas = JSON.parse(localStorage.getItem("ToDo")) || [];
+        tareasGuardadas = tareasGuardadas.filter(tarea =>
+            tarea.titulo !== titulo || tarea.descripcionTarea !== descripcionTarea
+        );
+        localStorage.setItem('ToDo', JSON.stringify(tareasGuardadas));
+    }
+});
 
 // Borrar todo
 const borrarTodo = document.getElementById("borrarTodo");
