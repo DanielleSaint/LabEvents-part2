@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Combo&family=Fredoka:wght@300..700&family=Genos:ital,wght@0,100..900;1,100..900&family=Joti+One&family=Knewave&family=Merienda:wght@300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playwrite+DE+Grund:wght@100..400&family=Shadows+Into+Light&family=Slackey&display=swap');
+body {
+    font-family: "Shadows Into Light", cursive;
+    background: linear-gradient(135deg, #c1f0ff 20%, #5194ff 80%);
+    margin: 3%;
+}
+.todo-container {
+    max-width: 80%;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(193, 240, 255, 1);
+}
+h1 {
+    text-align: center;
+    color: #6a5acd;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+.Contenedor-tarea{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input, textarea {
+    width: 70%;
+    padding: 10px;
+    margin: 10px 20px;
+    border: 2px solid #5194ff;
+    border-radius: 8px;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+input:focus, textarea:focus {
+    border-color: #5194ff;
+    box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+    outline: none;
+}
+textarea {
+    min-height: 50px;
+    resize: vertical;
+}
+button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: 600;
+}
+#botonTarea {
+    background-color: #c1f0ff;
+    color: #5194ff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-family: "Shadows Into Light", cursive;
+    font-weight: lighter;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width: 30%;
+}
+#botonTarea:hover {
+    background-color: #5a4aad;
+    color: #c1f0ff;
+    transform: translateY(-2px);
+}
+#notas{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#borrarTodo {
+    background-color: #5a4aad;
+    color: #c1f0ff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-top: 20px;
+    width: 50%;
+    font-family: "Shadows Into Light", cursive;
+    font-size: 1.5rem;
+}
+#borrarTodo:hover {
+    background-color: red;
+    transform: translateY(-2px);
+}
+#listado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    gap: 15px;
+}
+.listaToDo {
+    background: rgb(244, 236, 255);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(105, 90, 205, 0.37);
+    transition: all 0.3s ease;
+    border-left: 4px solid #6a5acd;
+}
+.listaToDo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(105, 90, 205, 0.678);
+}
+.listaToDo > div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.listaToDo h2 {
+    color: #444;
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    text-align: left;
+}
+.listaToDo p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+.eliminar {
+    font-family: "Shadows Into Light", cursive;
+    font-weight: lighter;
+    background-color: #5a4aad;
+    color: #c1f0ff;
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-left: auto;
+}
+.eliminar:hover {
+    background-color: red;
+}
+.tareaCompletada {
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 6px 12px rgba(105, 90, 205, 0.363);
+}
+.tareaCompletada:hover {
+    transform: scale(1.1);
+}
+.listaToDo[data-completed="true"] {
+    opacity: 0.8;
+    border-left-color: #4CAF50;
+}
+.listaToDo[data-completeda="true"] h2 {
+    text-decoration: line-through;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.listaToDo {
+    animation: fadeIn 0.5s ease forwards;
+}
+@media (max-width: 768px) {
+    .todo-container {
+        padding: 20px;
+    }
+    .listaToDo > div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .eliminar {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

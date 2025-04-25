@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My list To-Do</title>
+    <link rel="stylesheet" href="./ToDo.css">
 </head>
 <body>
   <section class="todo-container">
-    <h2>My list To-Do</h2>
-
-    <input type="text" id="nombreTarea" placeholder="Escribe el título" required>
-    <textarea name="tarea" id="descripcion" placeholder="Escribe tu tarea" required></textarea>
-    <button type="submit" id="botonTarea">Agregar Tarea</button>
+    <h1>My list To-Do</h1>
+    <div class="Contenedor-tarea">
+      <input type="text" id="nombreTarea" placeholder="Escribe el título" required>
+      <textarea name="tarea" id="descripcion" placeholder="Escribe tu tarea" required></textarea>
+      <button type="submit" id="botonTarea">Agregar Tarea</button>
+    </div>
+    
     <div id="notas">
       <ul id="listado"></ul>
       <button id="borrarTodo">Borrar todo</button>
     </div>
+  </section>
 
   <script src="./list.js"></script>
 </body>
